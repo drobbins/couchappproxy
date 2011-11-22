@@ -1,8 +1,0 @@
-{
-  "env" : {
-    "default" : {
-      "db" : "http://robbinsd:password@localhost:5984/couchappproxy"
-    }
-  }
-}
-
