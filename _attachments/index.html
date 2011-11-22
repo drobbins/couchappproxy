@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Couch Proxy</title>
+        <link rel="stylesheet" href="style/blueprint/screen.css" media="screen, projection" type="text/css">
+        <link rel="stylesheet" href="style/blueprint/print.css" media="print" type="text/css">
+        <script src="/_utils/script/json2.js"></script>
+        <script src="/_utils/script/sha1.js"></script>
+        <script src="/_utils/script/jquery.js"></script>
+        <script src="/_utils/script/jquery.couch.js"></script>
+        <script src="https://raw.github.com/couchapp/couchdb-login-jquery/master/jquery.couchLogin.min.js"></script>
+    </head>
+    <body><div class="container">
+        <div id="login" class="span-24 last" style="text-align:right" ></div>
+        <div id="content"></div>
+        <script type="text/javascript">
+            (function(){
+                var application_url = "/dashboard/_design/dashboard/index.html",
+                    $iframe = $("<iframe />",{
+                        id : "content-frame",
+                        style : "width: 100%; height: 900px; border: 0",
+                    });
+                $("#login").couchLogin({
+                    loggedIn : function(userCtx){
+                        $iframe.attr("src", application_url).appendTo("#content");
+                    },
+                    loggedOut : function(){
+                        $("#content").html("");
+                    }
+                });
+            })();
+        </script>
+    </div></body>
+</html>
